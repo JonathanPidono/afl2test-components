@@ -1,16 +1,21 @@
 <x-layout title="Blog">
 
-  <x-page-header title="Kisah Hidup Kartini">
-    Perjalanan Kartini dari masa kecil di Jepara sampai warisannya hari ini,
-    disusun berdasarkan urutan waktu.
-  </x-page-header>
+  <x-hero :hero="$hero" />
 
-  <section class="max-w-5xl mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      @foreach ($posts as $post)
-        <x-blog-card :judul="$post['judul']" :isi="$post['isi']" />
+  <div class="max-w-5xl mx-auto px-4 py-16 space-y-12">
+
+    <x-card-group title="Semasa Hidup" cols="2">
+      @foreach ($before as $post)
+        <x-blog-card :post="$post" />
       @endforeach
-    </div>
-  </section>
+    </x-card-group>
+
+    <x-card-group title="Setelah Wafat" cols="2">
+      @foreach ($after as $post)
+        <x-blog-card :post="$post" />
+      @endforeach
+    </x-card-group>
+
+  </div>
 
 </x-layout>
